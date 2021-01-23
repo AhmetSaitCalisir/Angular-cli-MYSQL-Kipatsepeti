@@ -3,16 +3,43 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { KitaplarComponent } from './pages/kitaplar/kitaplar.component';
+import { KitapEkleComponent } from './pages/kitap-ekle/kitap-ekle.component';
+import { KitapItemComponent } from './components/kitap-item/kitap-item.component';
+import { KitapGuncelleComponent } from './pages/kitap-guncelle/kitap-guncelle.component';
+import { KitapSilComponent } from './pages/kitap-sil/kitap-sil.component';
+import { BayilerComponent } from './pages/bayiler/bayiler.component';
+import { BayiItemComponent } from './components/bayi-item/bayi-item.component';
+import { BayiEkleComponent } from './pages/bayi-ekle/bayi-ekle.component';
+import { BayiGuncelleComponent } from './pages/bayi-guncelle/bayi-guncelle.component';
+import { BayiSilComponent } from './pages/bayi-sil/bayi-sil.component';
+import { TaleplerComponent } from './pages/talepler/talepler.component';
+import { TalepItemComponent } from './components/talep-item/talep-item.component';
+import { SatislarComponent } from './pages/satislar/satislar.component';
+import { SatisItemComponent } from './components/satis-item/satis-item.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    KitaplarComponent,
+    KitapEkleComponent,
+    KitapItemComponent,
+    KitapGuncelleComponent,
+    KitapSilComponent,
+    BayilerComponent,
+    BayiItemComponent,
+    BayiEkleComponent,
+    BayiGuncelleComponent,
+    BayiSilComponent,
+    TaleplerComponent,
+    TalepItemComponent,
+    SatislarComponent,
+    SatisItemComponent,
+    NavbarComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
