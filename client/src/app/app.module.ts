@@ -21,6 +21,8 @@ import { SatislarComponent } from './pages/satislar/satislar.component';
 import { SatisItemComponent } from './components/satis-item/satis-item.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { KaydolComponent } from './pages/kaydol/kaydol.component';
+import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
@@ -41,8 +43,9 @@ import { KaydolComponent } from './pages/kaydol/kaydol.component';
     SatisItemComponent,
     NavbarComponent,
     KaydolComponent,
+    LoginComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule,HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule,HttpClientModule,FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

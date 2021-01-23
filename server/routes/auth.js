@@ -13,20 +13,28 @@ router.post("/signin", (req, res) => {
     db.query(sql, (err, result) => {
         if (err) {
             console.log(err);
+            res.send(false);
         } else {
             console.log(result);
-            res.json(result);
+            res.send(true);
         }
     });
 });
 
 //giris
 router.post('/login', (req, res) => {
+    console.log(req.body);
     let sql = `select * from kullanıcılar where (ad='${req.body.ad}' and soyad='${req.body.soyad}') and sifre='${req.body.sifre}'`;
     db.query(sql, (err, result) => {
-        if (err) throw err;
-        console.log(result[0].ad, result[0].soyad, 'giriş yaptınız');
-        res.json(result);
+        if (err) {
+            console.log(err);
+            res.send(false);
+        } else if (result.length < 1) {
+            //console.log(result[0].ad, result[0].soyad, 'giriş yaptınız');
+            res.send(false);
+        } else {
+            res.send(true);
+        }
     })
 })
 
