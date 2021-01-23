@@ -13,7 +13,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
-  res.send("MERHABA DÜNYA");
+    res.send("MERHABA DÜNYA");
 });
 
 app.use("/auth", auth);
@@ -24,5 +24,5 @@ app.use("/satistalep", satis_talep);
 const port = process.env.PORT || 3545;
 
 app.listen(port, () => {
-  console.log(`Server başlatıldı => http://localhost:${port}/`);
+    console.log(`Server başlatıldı => http://localhost:${port}/`);
 });
