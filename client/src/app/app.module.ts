@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { HttpClientModule } from '@angular/common/http';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { KitaplarComponent } from './pages/kitaplar/kitaplar.component';
@@ -18,6 +20,7 @@ import { TalepItemComponent } from './components/talep-item/talep-item.component
 import { SatislarComponent } from './pages/satislar/satislar.component';
 import { SatisItemComponent } from './components/satis-item/satis-item.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { KaydolComponent } from './pages/kaydol/kaydol.component';
 
 @NgModule({
   declarations: [
@@ -37,8 +40,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     SatislarComponent,
     SatisItemComponent,
     NavbarComponent,
+    KaydolComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule,HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
