@@ -1,19 +1,24 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Kitap } from '../models/Kitap';
-import { FirebaseService } from './firebase.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+  }),
+};
 
 @Injectable({
   providedIn: 'root',
 })
 export class KitapService {
-  constructor(private firebaseService: FirebaseService) {}
+  kitapUrl: string = 'http://localhost:3545/kitaplar';
+  constructor(private http: HttpClient) {}
 
-  Kitaplar = this.firebaseService.db().ref('Kitaplar');
-
-  /*kitapGetir() : Observable<Kitap[]>{
-    this.Kitaplar.on("value", (snapshot) => {
-      return <Kitap[]>snapshot.val();
-    });
-  }*/
+  kitapEkle(kitap: Kitap): Observable<any> {
+    kitap.fiyat = Number(kitap.fiyat);
+    kitap.yil = Number(kitap.yil);
+    return this.http.post<any>(this.kitapUrl, kitap, httpOptions);
+  }
 }

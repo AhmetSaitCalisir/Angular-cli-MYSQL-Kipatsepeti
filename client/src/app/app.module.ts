@@ -45,7 +45,7 @@ import { LoginComponent } from './pages/login/login.component';
     KaydolComponent,
     LoginComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule,HttpClientModule,FormsModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
