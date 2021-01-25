@@ -8,7 +8,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  loginUser: Kullanici = new Kullanici('ad', 'soyad', '', '', 'sifre');
+  loginUser: Kullanici = new Kullanici('', '', '', '', '');
 
   constructor(private authService: AuthenticationService) {}
 

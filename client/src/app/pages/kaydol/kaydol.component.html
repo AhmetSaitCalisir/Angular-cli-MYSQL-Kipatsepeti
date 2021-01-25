@@ -1,77 +1,73 @@
-<div id="kaydol">
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <form (submit)="addUser()">
-          <div class="mb-3">
-            <label for="exampleInputAd" class="form-label">Adınız</label>
-            <input
-              type="text"
-              class="form-control"
-              id="exampleInputAd"
-              [(ngModel)]="User.ad"
-              name="User.ad"
-            />
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-5">
+      <form (submit)="addUser()">
+        <div class="mb-3">
+          <label for="exampleInputAd" class="form-label">Adınız</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleInputAd"
+            [(ngModel)]="User.ad"
+            name="User.ad"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputSoyad" class="form-label">Soyadınız</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleInputSoyad"
+            [(ngModel)]="User.soyad"
+            name="User.soyad"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label"
+            >Email address</label
+          >
+          <input
+            type="email"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            [(ngModel)]="User.email"
+            name="User.email"
+          />
+          <div id="emailHelp" class="form-text">
+            Email adresiniz sistemde güvende olacaktır.
           </div>
-          <div class="mb-3">
-            <label for="exampleInputSoyad" class="form-label">Soyadınız</label>
-            <input
-              type="text"
-              class="form-control"
-              id="exampleInputSoyad"
-              [(ngModel)]="User.soyad"
-              name="User.soyad"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label"
-              >Email address</label
-            >
-            <input
-              type="email"
-              class="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
-              [(ngModel)]="User.email"
-              name="User.email"
-            />
-            <div id="emailHelp" class="form-text">
-              Email adresiniz sistemde güvende olacaktır.
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPhone">Telefon</label>
-            <input
-              type="tel"
-              id="exampleInputPhone"
-              class="form-control"
-              placeholder="542 455 67 58"
-              required
-              pattern="[0-9]{3} [0-9]{3} [0-9]{2} [0-9]{2}"
-              [(ngModel)]="User.tel"
-              name="User.tel"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label"
-              >Password</label
-            >
-            <input
-              type="password"
-              class="form-control"
-              id="exampleInputPassword1"
-              [(ngModel)]="User.sifre"
-              name="User.sifre"
-            />
-          </div>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPhone">Telefon</label>
+          <input
+            type="tel"
+            id="exampleInputPhone"
+            class="form-control"
+            placeholder="542 455 67 58"
+            required
+            pattern="[0-9]{3} [0-9]{3} [0-9]{2} [0-9]{2}"
+            [(ngModel)]="User.tel"
+            name="User.tel"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="exampleInputPassword1"
+            [(ngModel)]="User.sifre"
+            name="User.sifre"
+          />
           <div class="col-auto">
             <span id="passwordHelpInline" class="form-text">
-              Must be 8-20 characters long.
+              8-20 Karakter arasında olmalıdır
             </span>
           </div>
-          <button type="submit" class="btn btn-primary">Kaydol</button>
-        </form>
-      </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Kaydol</button>
+      </form>
     </div>
   </div>
 </div>

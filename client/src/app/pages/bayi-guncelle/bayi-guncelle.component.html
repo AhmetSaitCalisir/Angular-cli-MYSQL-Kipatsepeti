@@ -1,1 +1,93 @@
-<p>bayi-guncelle works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <form (submit)="bayiGuncelle()">
+        <div class="form-group">
+          <label for="FormControlBayiIsmi">Bayi İsmi</label>
+          <input
+            type="text"
+            class="form-control"
+            id="FormControlBayiIsmi"
+            placeholder="Xxxx Bayi"
+            [(ngModel)]="bayi.bayi_isim"
+            name="bayi.bayi_isim"
+          />
+        </div>
+        <div class="form-group">
+          <label for="FormControlBayiSahibi">Bayi Sahibi</label>
+          <input
+            type="text"
+            class="form-control"
+            id="FormControlBayiSahibi"
+            placeholder="İsim Soyisim"
+            [(ngModel)]="bayi.bayi_sahibi"
+            name="bayi.bayi_sahibi"
+          />
+        </div>
+        <div class="form-group">
+          <label for="FormControlEmail">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="FormControlEmail"
+            placeholder="ornek@mail.com"
+            [(ngModel)]="bayi.email"
+            name="bayi.email"
+          />
+        </div>
+        <div class="form-group">
+          <label for="FormControlTel">Telefon</label>
+          <input
+            type="tel"
+            id="exampleInputTel"
+            class="form-control"
+            placeholder="xxx xxx xx xx"
+            required
+            pattern="[0-9]{3} [0-9]{3} [0-9]{2} [0-9]{2}"
+            [(ngModel)]="bayi.tel"
+            name="bayi.tel"
+          />
+        </div>
+        <div class="form-group">
+          <label for="FormControlIl">İl</label>
+          <input
+            type="text"
+            class="form-control"
+            id="FormControlIl"
+            placeholder="Manisa"
+            [(ngModel)]="bayi.il"
+            name="bayi.il"
+          />
+        </div>
+        <div class="form-group">
+          <label for="FormControlIlce">İlçe</label>
+          <input
+            type="text"
+            class="form-control"
+            id="FormControlIlce"
+            placeholder="Turgutlu"
+            [(ngModel)]="bayi.ilce"
+            name="bayi.ilce"
+          />
+        </div>
+        <div class="form-group">
+          <label for="FormControlPostaKodu">Posta Kodu</label>
+          <input
+            type="text"
+            class="form-control"
+            id="FormControlPostaKodu"
+            placeholder="45400"
+            pattern="[0-9]{5}"
+            maxlength="5"
+            [(ngModel)]="bayi.posta_kodu"
+            name="bayi.posta_kodu"
+          />
+        </div>
+        <button type="submit" class="btn btn-outline-warning btn-block">
+          Bayi Güncelle
+        </button>
+      </form>
+      <br /><br /><br />
+    </div>
+  </div>
+</div>
