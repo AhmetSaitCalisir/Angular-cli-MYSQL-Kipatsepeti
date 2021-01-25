@@ -16,6 +16,11 @@ export class KitapService {
   kitapUrl: string = 'http://localhost:3545/kitaplar';
   constructor(private http: HttpClient) {}
 
+  //kitap listele
+  kitapGetir(): Observable<Kitap[]> {
+    return this.http.get<Kitap[]>(this.kitapUrl);
+  }
+
   kitapEkle(kitap: Kitap): Observable<any> {
     kitap.fiyat = Number(kitap.fiyat);
     kitap.yil = Number(kitap.yil);
