@@ -1,28 +1,28 @@
-<div class="card">
-  <div class="card-body">
-    <h5 class="card-title">bayi_isim</h5>
-    <p class="card-text">bayi_sahibi</p>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">il/ilce</li>
-    <li class="list-group-item">email</li>
-    <li class="list-group-item">tel</li>
-    <li class="list-group-item">posta_kodu</li>
-  </ul>
-  <div class="card-body">
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <button class="btn btn-outline-warning btn-block btn-sm">
+<div class="card" [ngClass]="setClasses()">
+    <div class="card-body">
+        <h5 class="card-title">Bayi isim: {{ bayi.bayi_isim }}</h5>
+        <p class="card-text">Bayi sahibi: {{ bayi.bayi_sahibi }}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">İl/İlce : {{ bayi.il }}/{{ bayi.ilce }}</li>
+        <li class="list-group-item">Email: {{ bayi.email }}</li>
+        <li class="list-group-item">Tel: {{ bayi.tel }}</li>
+        <li class="list-group-item">Posta kodu: {{ bayi.posta_kodu }}</li>
+    </ul>
+    <div class="card-body">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-outline-warning btn-block btn-sm">
             Bayi Güncelle
           </button>
-        </div>
-        <div class="col">
-          <button class="btn btn-outline-danger btn-block btn-sm">
+                </div>
+                <div class="col">
+                    <button class="btn btn-outline-danger btn-block btn-sm">
             Bayi Sil
           </button>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>

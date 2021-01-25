@@ -19,4 +19,9 @@ export class BayiService {
   bayiEkle(bayi: Bayi): Observable<any> {
     return this.http.post<any>(this.bayiUrl, bayi, httpOptions);
   }
+
+  //bayiListele
+  bayiListele(): Observable<Bayi[]> {
+    return this.http.get<Bayi[]>(this.bayiUrl);
+  }
 }
