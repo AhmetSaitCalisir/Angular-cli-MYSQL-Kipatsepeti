@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Kitap } from 'src/app/models/Kitap';
 import { KitapService } from 'src/app/services/kitap.service';
 
@@ -11,6 +11,7 @@ export class KitapItemComponent implements OnInit {
   constructor(private bookService: KitapService) {}
 
   @Input() book: Kitap = new Kitap(0, '', '', '', 0, 0, '', '');
+  @Output() deleteBook: EventEmitter<Kitap> = new EventEmitter();
 
   ngOnInit(): void {}
 
@@ -20,5 +21,10 @@ export class KitapItemComponent implements OnInit {
       book: true,
     };
     return classes;
+  }
+
+  //onDelete
+  onDelete(dbook: any) {
+    this.deleteBook.emit(dbook);
   }
 }

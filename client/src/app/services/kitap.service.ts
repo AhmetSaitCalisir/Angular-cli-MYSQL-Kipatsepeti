@@ -26,4 +26,10 @@ export class KitapService {
     kitap.yil = Number(kitap.yil);
     return this.http.post<any>(this.kitapUrl, kitap, httpOptions);
   }
+
+  //delete book
+  bookDelete(book: Kitap): Observable<Kitap> {
+    const url = `${this.kitapUrl}/${book.id}`;
+    return this.http.delete<Kitap>(url, httpOptions);
+  }
 }

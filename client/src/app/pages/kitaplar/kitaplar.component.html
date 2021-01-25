@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-4">
-            <app-kitap-item *ngFor="let book of books" [book]="book"></app-kitap-item>
+            <app-kitap-item *ngFor="let book of books" [book]="book" (deleteBook)="deleteBook($event)"></app-kitap-item>
             <br />
         </div>
     </div>
