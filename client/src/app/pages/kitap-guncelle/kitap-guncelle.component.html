@@ -1,37 +1,18 @@
 <div class="container">
-  <div class="row">
-    <div class="col">
-      <form (submit)="kitapGuncelle()">
-        <div class="form-group">
-          <label for="FormControlInputKitap">Kitap İsmi</label>
-          <input
-            type="text"
-            class="form-control"
-            id="FormControlInputKitap"
-            placeholder="Yüzüklerin Efendisi"
-            [(ngModel)]="kitap.isim"
-            name="kitap.isim"
-          />
-        </div>
-        <div class="form-group">
-          <label for="FormControlInputYazar">Yazar İsmi</label>
-          <input
-            type="text"
-            class="form-control"
-            id="FormControlInputYazar"
-            placeholder="J.R.R Tolkien"
-            [(ngModel)]="kitap.yazar"
-            name="kitap.yazar"
-          />
-        </div>
-        <div class="form-group">
-          <label for="FormControlKategori">Kategori</label>
-          <select
-            class="form-control"
-            id="FormControlKategori"
-            [(ngModel)]="kitap.kategori"
-            name="kitap.kategori"
-          >
+    <div class="row">
+        <div class="col">
+            <form (submit)="kitapGuncelle()">
+                <div class="form-group">
+                    <label for="FormControlInputKitap">Kitap İsmi</label>
+                    <input type="text" class="form-control" id="FormControlInputKitap" placeholder="Yüzüklerin Efendisi" [(ngModel)]="kitap.isim" name="kitap.isim" />
+                </div>
+                <div class="form-group">
+                    <label for="FormControlInputYazar">Yazar İsmi</label>
+                    <input type="text" class="form-control" id="FormControlInputYazar" placeholder="J.R.R Tolkien" [(ngModel)]="kitap.yazar" name="kitap.yazar" />
+                </div>
+                <div class="form-group">
+                    <label for="FormControlKategori">Kategori</label>
+                    <select class="form-control" id="FormControlKategori" [(ngModel)]="kitap.kategori" name="kitap.kategori">
             <option>Aksiyon-Macera</option>
             <option>Anı-Mektup-Günlük</option>
             <option>Araştıma-İnceleme-Referans</option>
@@ -47,60 +28,29 @@
             <option>Polisiye</option>
             <option>Roman</option>
           </select>
-        </div>
-        <div class="form-group">
-          <label for="FormControlInputYayınevi">Yayınevi İsmi</label>
-          <input
-            type="text"
-            class="form-control"
-            id="FormControlInputYayınevi"
-            placeholder="metis"
-            [(ngModel)]="kitap.yayinevi"
-            name="kitap.yayinevi"
-          />
-        </div>
-        <div class="form-group">
-          <label for="FormControlInputYil">Yayımlanma Yılı</label>
-          <input
-            type="text"
-            class="form-control"
-            id="FormControlInputYil"
-            placeholder="1997"
-            pattern="[0-9]{4}"
-            maxlength="4"
-            [(ngModel)]="kitap.yil"
-            name="kitap.yil"
-          />
-        </div>
-        <div class="form-group">
-          <label for="FormControlInputYil">Fiyat</label>
-          <input
-            type="text"
-            class="form-control"
-            id="FormControlInputYil"
-            placeholder="50"
-            pattern="[0-9]{3}"
-            maxlength="3"
-            [(ngModel)]="kitap.fiyat"
-            name="kitap.fiyat"
-          />
-        </div>
-        <div class="form-group">
-          <label for="FormControlAciklama">Açıklama</label>
-          <textarea
-            class="form-control"
-            id="FormControlAciklama"
-            rows="3"
-            [(ngModel)]="kitap.aciklama"
-            name="kitap.aciklama"
-          ></textarea>
-        </div>
-        <button type="submit" class="btn btn-outline-warning btn-block">
+                </div>
+                <div class="form-group">
+                    <label for="FormControlInputYayınevi">Yayınevi İsmi</label>
+                    <input type="text" class="form-control" id="FormControlInputYayınevi" placeholder="metis" [(ngModel)]="kitap.yayinevi" name="kitap.yayinevi" />
+                </div>
+                <div class="form-group">
+                    <label for="FormControlInputYil">Yayımlanma Yılı</label>
+                    <input type="text" class="form-control" id="FormControlInputYil" placeholder="1997" pattern="[0-9]{4}" maxlength="4" [(ngModel)]="kitap.yil" name="kitap.yil" />
+                </div>
+                <div class="form-group">
+                    <label for="FormControlInputYil">Fiyat</label>
+                    <input type="text" class="form-control" id="FormControlInputYil" placeholder="50" pattern="[0-9]{3}" maxlength="3" [(ngModel)]="kitap.fiyat" name="kitap.fiyat" />
+                </div>
+                <div class="form-group">
+                    <label for="FormControlAciklama">Açıklama</label>
+                    <textarea class="form-control" id="FormControlAciklama" rows="3" [(ngModel)]="kitap.aciklama" name="kitap.aciklama"></textarea>
+                </div>
+                <button type="submit" class="btn btn-outline-warning btn-block">
           Kitap Güncelle
         </button>
-      </form>
-      <br />
-      <br /><br />
+            </form>
+            <br />
+            <br /><br />
+        </div>
     </div>
-  </div>
 </div>

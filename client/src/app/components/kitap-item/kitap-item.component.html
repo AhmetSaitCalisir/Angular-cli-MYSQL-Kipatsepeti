@@ -1,32 +1,29 @@
 <div class="card" [ngClass]="setClasses()">
-  <div class="card-body">
-    <h5 class="card-title">İsim: {{ book.isim }}</h5>
-    <p class="card-text">Yazar: {{ book.yazar }}</p>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Kategori: {{ book.kategori }}</li>
-    <li class="list-group-item">Yayinevi: {{ book.yayinevi }}</li>
-    <li class="list-group-item">Yıl: {{ book.yil }}</li>
-    <li class="list-group-item">Fiyat: {{ book.fiyat }} ₺</li>
-    <li class="list-group-item">Açıklama: {{ book.aciklama }}</li>
-  </ul>
-  <div class="card-body">
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <button class="btn btn-outline-warning btn-block btn-sm">
+    <div class="card-body">
+        <h5 class="card-title">İsim: {{ book.isim }}</h5>
+        <p class="card-text">Yazar: {{ book.yazar }}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Kategori: {{ book.kategori }}</li>
+        <li class="list-group-item">Yayinevi: {{ book.yayinevi }}</li>
+        <li class="list-group-item">Yıl: {{ book.yil }}</li>
+        <li class="list-group-item">Fiyat: {{ book.fiyat }} ₺</li>
+        <li class="list-group-item">Açıklama: {{ book.aciklama }}</li>
+    </ul>
+    <div class="card-body">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-outline-warning btn-block btn-sm" (click)="kitapGuncelle()">
             Kitap Güncelle
           </button>
-        </div>
-        <div class="col">
-          <button
-            class="btn btn-outline-danger btn-block btn-sm"
-            (click)="onDelete(book)"
-          >
+                </div>
+                <div class="col">
+                    <button class="btn btn-outline-danger btn-block btn-sm" (click)="onDelete(book)">
             Kitap Sil
           </button>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>

@@ -32,4 +32,11 @@ export class KitapService {
     const url = `${this.kitapUrl}/${book.id}`;
     return this.http.delete<Kitap>(url, httpOptions);
   }
+
+  //kitap guncelle
+  bookUpdate(book:Kitap):Observable<any> {
+    const url = `${this.kitapUrl}/${book.id}`;
+    return this.http.put<any>(url,book,httpOptions);
+
+  }
 }

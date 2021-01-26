@@ -6,6 +6,7 @@ import { BayilerComponent } from './pages/bayiler/bayiler.component';
 import { LoginComponent } from './pages/login/login.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { KitapGuncelleComponent } from './pages/kitap-guncelle/kitap-guncelle.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'kitapekle', component: KitapEkleComponent },
   { path: 'bayiekle', component: BayiEkleComponent },
   { path: 'bayiguncelle/:id', component: BayiGuncelleComponent },
+  { path: 'kitapguncelle/:id', component: KitapGuncelleComponent}
 ];
 
 @NgModule({

@@ -16,7 +16,7 @@ router.get("/", (req, res) => { //tüm kolonları getiriyor şstediklerimizi sec
 
 async function IdBul(bayi_isim, bayi_sahibi, kitap_isim) {
     let promise = new Promise((resolve, reject) => {
-        let sqlID = `select b.id ,k.kitap_id from bayiler b,kitap_bilgi k where (b.bayi_isim='${bayi_isim}' and b.bayi_sahibi='${bayi_sahibi}') and k.isim='${kitap_isim}'`;
+        let sqlID = `select b.id as 'bayi_id',k.id as 'kitap_id' from bayiler b,kitap_bilgi k where (b.bayi_isim='${bayi_isim}' and b.bayi_sahibi='${bayi_sahibi}') and k.isim='${kitap_isim}'`;
         db.query(sqlID, (err, result) => {
             console.log("sqlıd qwuery içine girildi");
             if (err) reject(err);
@@ -24,7 +24,7 @@ async function IdBul(bayi_isim, bayi_sahibi, kitap_isim) {
             IDs.bayi_id = -1;
             IDs.kitap_id = -1;
             IDs.bayi_id = result[0].id;
-            IDs.kitap_id = result[0].kitap_id;
+            IDs.kitap_id = result[0].id;
             console.log("bayi id bulundu", IDs.bayi_id, "kitap id:", IDs.kitap_id);
             resolve(IDs);
         });
