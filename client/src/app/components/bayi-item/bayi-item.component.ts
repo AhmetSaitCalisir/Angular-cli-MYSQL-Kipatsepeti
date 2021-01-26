@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Bayi } from 'src/app/models/Bayi';
+import { BayiService } from 'src/app/services/bayi.service';
 
 @Component({
   selector: 'app-bayi-item',
@@ -7,17 +8,26 @@ import { Bayi } from 'src/app/models/Bayi';
   styleUrls: ['./bayi-item.component.css'],
 })
 export class BayiItemComponent implements OnInit {
-  constructor() {}
+  constructor(private bayiService: BayiService) {}
 
   @Input() bayi: Bayi = new Bayi(2, '', '', '', '', '', '', '');
+  @Output() deleteBayi: EventEmitter<Bayi> = new EventEmitter();
 
   ngOnInit(): void {}
 
   //dynamic classes
   setClasses() {
     let classes = {
-      book: true,
+      bayi: true,
     };
     return classes;
+  }
+
+  //onDelete
+  bayiSil(bayi: Bayi) {
+    this.bayiService.bayiSil(bayi).subscribe((res) => {
+      alert(res);
+      window.location.reload();
+    });
   }
 }

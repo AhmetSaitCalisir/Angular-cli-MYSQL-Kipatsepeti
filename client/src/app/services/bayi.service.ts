@@ -24,4 +24,10 @@ export class BayiService {
   bayiListele(): Observable<Bayi[]> {
     return this.http.get<Bayi[]>(this.bayiUrl);
   }
+
+  //delete bayi
+  bayiSil(bayi: Bayi): Observable<Bayi> {
+    const url = `${this.bayiUrl}/${bayi.id}`;
+    return this.http.delete<Bayi>(url, httpOptions);
+  }
 }
