@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Bayi } from 'src/app/models/Bayi';
 import { BayiService } from 'src/app/services/bayi.service';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-bayi-item',
@@ -8,7 +9,7 @@ import { BayiService } from 'src/app/services/bayi.service';
   styleUrls: ['./bayi-item.component.css'],
 })
 export class BayiItemComponent implements OnInit {
-  constructor(private bayiService: BayiService) {}
+  constructor(private bayiService: BayiService, private router: Router) {}
 
   @Input() bayi: Bayi = new Bayi(2, '', '', '', '', '', '', '');
   @Output() deleteBayi: EventEmitter<Bayi> = new EventEmitter();
@@ -29,5 +30,9 @@ export class BayiItemComponent implements OnInit {
       alert(res);
       window.location.reload();
     });
+  }
+
+  bayiGuncelle() {
+    this.router.navigate(['/bayiguncelle', this.bayi.id]);
   }
 }

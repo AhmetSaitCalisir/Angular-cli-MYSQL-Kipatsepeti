@@ -1,7 +1,20 @@
+import { BayiGuncelleComponent } from './pages/bayi-guncelle/bayi-guncelle.component';
+import { BayiEkleComponent } from './pages/bayi-ekle/bayi-ekle.component';
+import { KitapEkleComponent } from './pages/kitap-ekle/kitap-ekle.component';
+import { KitaplarComponent } from './pages/kitaplar/kitaplar.component';
+import { BayilerComponent } from './pages/bayiler/bayiler.component';
+import { LoginComponent } from './pages/login/login.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: '', component: LoginComponent },
+  { path: 'bayiler', component: BayilerComponent },
+  { path: 'kitaplar', component: KitaplarComponent },
+  { path: 'kitapekle', component: KitapEkleComponent },
+  { path: 'bayiekle', component: BayiEkleComponent },
+  { path: 'bayiguncelle/:id', component: BayiGuncelleComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

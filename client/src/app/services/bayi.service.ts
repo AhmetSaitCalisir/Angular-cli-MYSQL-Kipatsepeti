@@ -30,4 +30,9 @@ export class BayiService {
     const url = `${this.bayiUrl}/${bayi.id}`;
     return this.http.delete<Bayi>(url, httpOptions);
   }
+
+  bayiGuncelle(bayi: Bayi): Observable<any> {
+    const url = `${this.bayiUrl}/${bayi.id}`;
+    return this.http.put<any>(url, bayi, httpOptions);
+  }
 }

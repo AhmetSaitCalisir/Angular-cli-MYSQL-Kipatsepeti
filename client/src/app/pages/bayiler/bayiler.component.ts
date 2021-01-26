@@ -16,5 +16,4 @@ export class BayilerComponent implements OnInit {
       this.bayiler = bayis;
     });
   }
-  
 }
