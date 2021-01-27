@@ -1,8 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Talep } from '../models/Talep';
-
+import { TalepSatis } from '../models/TalepSatis';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -13,17 +12,13 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root',
 })
-
-
 export class SatisTalepService {
+  talepUrl: string = 'http://localhost:3545/satistalep';
 
-talepUrl: string='http://localhost:3545/satistalep'
-
-  constructor(private http:HttpClient) {}
-  
+  constructor(private http: HttpClient) {}
 
   //talep listele
-  talepListele():Observable<Talep[]>{
-    return this.http.get<Talep[]>(this.talepUrl);
+  talepListele(): Observable<TalepSatis[]> {
+    return this.http.get<TalepSatis[]>(this.talepUrl);
   }
 }

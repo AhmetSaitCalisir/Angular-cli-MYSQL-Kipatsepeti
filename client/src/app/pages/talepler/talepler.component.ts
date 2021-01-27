@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Talep } from 'src/app/models/Talep';
+import { TalepSatis } from 'src/app/models/TalepSatis';
 import { SatisTalepService } from 'src/app/services/satis-talep.service';
 
 @Component({
@@ -8,16 +8,13 @@ import { SatisTalepService } from 'src/app/services/satis-talep.service';
   styleUrls: ['./talepler.component.css'],
 })
 export class TaleplerComponent implements OnInit {
+  taleps: TalepSatis[] = [];
 
-taleps:Talep[]=[];
-
-  constructor(private talepService:SatisTalepService) {}
+  constructor(private talepService: SatisTalepService) {}
 
   ngOnInit(): void {
-
-this.talepService.talepListele().subscribe((talepler) => {
-  this.taleps=talepler;
-})
-
+    this.talepService.talepListele().subscribe((talepler) => {
+      this.taleps = talepler;
+    });
   }
 }
