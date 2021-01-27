@@ -1,110 +1,154 @@
 const express = require("express");
 
-const db = require('./connection');
+const db = require("./connection");
 const router = express.Router();
 
 //talep listele
-router.get("/", (req, res) => { //tüm kolonları getiriyor şstediklerimizi secicez
-    let sql =
-        "select * from (talepler t join kitap_talep kt on kt.talep_id=t.talep_id) join kitap_bilgi kb on kb.kitap_id=kt.kitap_id";
-    db.query(sql, (err, results) => {
-        if (err) throw err;
-        console.log("Tüm talepler listelendi");
-        res.json(results);
-    });
+router.get("/talepler", (req, res) => {
+  const sql =
+    "select * from talepler t  join bayiler b on b.id=t.bayi_id WHERE t.onay_durumu=0";
+  db.query(sql, (err, result) => {
+    if (err) {
+      console.log(err);
+      res.status(404).send("Talepler Getirilemedi");
+    } else {
+      res.json(result);
+    }
+  });
 });
 
-async function IdBul(bayi_isim, bayi_sahibi, kitap_isim) {
-    let promise = new Promise((resolve, reject) => {
-        let sqlID = `select b.id as 'bayi_id',k.id as 'kitap_id' from bayiler b,kitap_bilgi k where (b.bayi_isim='${bayi_isim}' and b.bayi_sahibi='${bayi_sahibi}') and k.isim='${kitap_isim}'`;
-        db.query(sqlID, (err, result) => {
-            console.log("sqlıd qwuery içine girildi");
-            if (err) reject(err);
-            let IDs = {};
-            IDs.bayi_id = -1;
-            IDs.kitap_id = -1;
-            IDs.bayi_id = result[0].id;
-            IDs.kitap_id = result[0].id;
-            console.log("bayi id bulundu", IDs.bayi_id, "kitap id:", IDs.kitap_id);
-            resolve(IDs);
-        });
+//satış listele
+router.get("/satislar", (req, res) => {
+  const sql =
+    "select * from talepler t  join bayiler b on b.id=t.bayi_id WHERE t.onay_durumu=1";
+  db.query(sql, (err, result) => {
+    if (err) {
+      console.log(err);
+      res.status(404).send("Satışlar Getirilemedi");
+    } else {
+      res.json(result);
+    }
+  });
+});
+
+//talep edilen kitaplar
+router.get("/kitaplar/:id", (req, res) => {
+  const sql = `SELECT * FROM kitap_angular.kitap_talep kt join kitap_bilgi kb on kt.kitap_id=kb.id WHERE talep_id = ${req.params.id}`;
+  db.query(sql, (err, result) => {
+    if (err) {
+      console.log(err);
+      res.status(404).send("Talep edilen Kitaplar Getirilemedi");
+    } else {
+      res.json(result);
+    }
+  });
+});
+
+// talep ekle
+router.post("/talepler", (req, res) => {
+  const talep_id = Math.floor(Math.random() * 10000) + 1000;
+  const sqlTalep = `INSERT INTO kitap_angular.talepler (talep_id,bayi_id, fiyat, tarih, onay_durumu) VALUES (${talep_id},'${req.body.bayi_id}', '${req.body.fiyat}', NOW(), '0')`;
+  db.query(sqlTalep, (err, result) => {
+    if (err) {
+      console.log(err);
+      res.status(404).send("Talep eklenirken sorun meydana geldi");
+    }
+  });
+  let uzunluk = 0;
+  console.log("req.body.kitaplar");
+  console.log(req.body.kitaplar);
+  req.body.kitaplar.forEach((kitap) => {
+    console.log("kitap");
+    console.log(kitap);
+    const sqlKitaplar = `INSERT INTO kitap_angular.kitap_talep (adet, talep_id,kitap_id) VALUES ('${kitap.adet}',${talep_id}, '${kitap.kitap_id}');`;
+    db.query(sqlKitaplar, (err, result) => {
+      console.log(kitap.kitap_id + " id şuanda ekleniyor");
+      if (err) {
+        console.log(err);
+        res
+          .status(404)
+          .send("Talep Edilen Kitap eklenirken sorun meydana geldi");
+      }
+      uzunluk++;
+      if (uzunluk == req.body.kitaplar.length) {
+        console.log("Eklenme bitti");
+        res.send("Talep Oluşturuldu");
+      }
+      console.log("kitaplar.length " + req.body.kitaplar.length);
+      console.log("uzunluk " + uzunluk);
     });
-    let result = await promise;
-    return result;
+  });
+});
+
+//talep onayla
+router.put("/onayla/:id", (req, res) => {
+  const sql = `UPDATE kitap_angular.talepler SET onay_durumu = '1' WHERE (talep_id = '${req.params.id}');`;
+  db.query(sql, (err, result) => {
+    if (err) {
+      console.log(err);
+      res.status(404).send("Talep onaylanırken sorun meydana geldi");
+    }
+    res.send("Talep Onaylandı");
+  });
+});
+
+function talepSil(id) {
+  const silSql = `DELETE FROM kitap_angular.talepler WHERE (talep_id = '${id}')`;
+  db.query(silSql, (err, result) => {
+    if (err) {
+      console.log(err);
+    }
+  });
+  const ksilSql = `DELETE FROM kitap_angular.kitap_talep WHERE (talep_id = '${id}')`;
+  db.query(ksilSql, (err, result) => {
+    if (err) {
+      console.log(err);
+    }
+    return;
+  });
 }
-
-async function ekle(bilgi) {
-    let ID = -1;
-    let promise = new Promise((resolve, reject) => {
-        let sql = `insert into talepler (bayi_id,fiyat,tarih,onay_durumu) values (${bilgi.bayi_id},${bilgi.fiyat},'${bilgi.tarih}','1')`;
-        db.query(sql, (err, result) => {
-            console.log('insert sorgusu içine girldi.');
-            if (err) {
-                console.log(err);
-            }
-            console.log('talep eklendi');
-            resolve("ekle query sona erdi");
-        })
-    }).then(async() => {
-        let promiseID = new Promise((resolve, reject) => {
-            let sqlTalepId = `select talep_id from talepler  where bayi_id=${bilgi.bayi_id} and tarih='${bilgi.tarih}'`;
-            db.query(sqlTalepId, (err, results) => {
-                if (err) {
-                    console.log(err);
-                }
-                ID = results[0].talep_id;
-                resolve(ID);
-            });
-        });
-        let result = await promiseID;
-        return result;
-    });
-    return await promise;
-}
-
-async function kitap_talep_ekle(
-    talep_id, kitap_id, adet
-) {
-    let promise = new Promise((resolve, reject) => {
-        let sql = `insert into kitap_talep (adet,talep_id,kitap_id) values (${adet},${talep_id},${kitap_id})`;
-        db.query(sql, (err, results) => {
-            if (err) {
-                console.log(err);
-            }
-            resolve("talep kitap bilgileri eklendi");
-        });
-    });
-}
-
-//ekle 
-router.post('/add', async(req, res) => {
-    let IDs = await IdBul(req.body.bayi_isim, req.body.bayi_sahibi, req.body.kitap_isim);
-
-    let gonder_bilgi = {};
-    gonder_bilgi.bayi_id = IDs.bayi_id;
-    gonder_bilgi.fiyat = req.body.fiyat;
-    gonder_bilgi.tarih = req.body.tarih;
-
-    const kitap_bilgi = {};
-    kitap_bilgi.adet = req.body.adet;
-    kitap_bilgi.kitap_id = IDs.kitap_id;
-
-    await kitap_talep_ekle(
-        await ekle(gonder_bilgi),
-        kitap_bilgi.kitap_id,
-        kitap_bilgi.adet
-    );
-
-})
 
 //talep sil
-router.delete('/delete/:id', (req, res) => {
-    let sql = `delete from talepler where talep_id=${req.params.id}`;
-    db.query(sql, (err, result) => {
-        if (err) throw err;
-        console.log("Talep silindi.");
-    });
+router.delete("/sil/:id", (req, res) => {
+  talepSil(req.params.id);
+  res.send("Silindi");
+});
 
-})
+//talep güncelle
+router.put("/guncelle/:id", (req, res) => {
+  talepSil(req.params.id);
+  const talep_id = req.params.id;
+  const sqlTalep = `INSERT INTO kitap_angular.talepler (talep_id,bayi_id, fiyat, tarih, onay_durumu) VALUES (${talep_id},'${req.body.bayi_id}', '${req.body.fiyat}', NOW(), '0')`;
+  db.query(sqlTalep, (err, result) => {
+    if (err) {
+      console.log(err);
+      res.status(404).send("Talep eklenirken sorun meydana geldi");
+    }
+  });
+  let uzunluk = 0;
+  console.log("req.body.kitaplar");
+  console.log(req.body.kitaplar);
+  req.body.kitaplar.forEach((kitap) => {
+    console.log("kitap");
+    console.log(kitap);
+    const sqlKitaplar = `INSERT INTO kitap_angular.kitap_talep (adet, talep_id,kitap_id) VALUES ('${kitap.adet}',${talep_id}, '${kitap.kitap_id}');`;
+    db.query(sqlKitaplar, (err, result) => {
+      console.log(kitap.kitap_id + " id şuanda ekleniyor");
+      if (err) {
+        console.log(err);
+        res
+          .status(404)
+          .send("Talep Edilen Kitap eklenirken sorun meydana geldi");
+      }
+      uzunluk++;
+      if (uzunluk == req.body.kitaplar.length) {
+        console.log("Eklenme bitti");
+        res.send("Talep Güncellendi");
+      }
+      console.log("kitaplar.length " + req.body.kitaplar.length);
+      console.log("uzunluk " + uzunluk);
+    });
+  });
+});
 
 module.exports = router;
