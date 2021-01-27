@@ -19,6 +19,6 @@ export class SatisTalepService {
 
   //talep listele
   talepListele(): Observable<TalepSatis[]> {
-    return this.http.get<TalepSatis[]>(this.talepUrl);
+    return this.http.get<TalepSatis[]>(`${this.talepUrl}/talepler`);
   }
 }

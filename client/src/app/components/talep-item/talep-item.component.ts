@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { TalepSatis, TalepSatisKitap } from 'src/app/models/TalepSatis';
+import { SatisTalepService } from 'src/app/services/satis-talep.service';
 
 @Component({
   selector: 'app-talep-item',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TalepItemComponent implements OnInit {
 
-  constructor() { }
+  constructor(private talepService:SatisTalepService) { }
+
+  @Input() talep: TalepSatis = new TalepSatis(0,0,'','2021-01-01',0,'','','','','','','');
+  
+  talepKitaplar: TalepSatisKitap[]= [new TalepSatisKitap(0,0,0,0,'dnm','yazar','kategoori',2020,20,'minnakımı çok seviom ki ben ya off yicez onu')]
+
 
   ngOnInit(): void {
   }
+
+ 
 
 }

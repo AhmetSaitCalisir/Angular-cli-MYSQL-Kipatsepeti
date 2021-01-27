@@ -7,6 +7,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { KitapGuncelleComponent } from './pages/kitap-guncelle/kitap-guncelle.component';
+import { TaleplerComponent } from './pages/talepler/talepler.component';
+import { SatislarComponent } from './pages/satislar/satislar.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -15,7 +17,9 @@ const routes: Routes = [
   { path: 'kitapekle', component: KitapEkleComponent },
   { path: 'bayiekle', component: BayiEkleComponent },
   { path: 'bayiguncelle/:id', component: BayiGuncelleComponent },
-  { path: 'kitapguncelle/:id', component: KitapGuncelleComponent}
+  { path: 'kitapguncelle/:id', component: KitapGuncelleComponent},
+  { path: 'talepler', component:TaleplerComponent},
+  { path: 'satislar', component:SatislarComponent}
 ];
 
 @NgModule({
