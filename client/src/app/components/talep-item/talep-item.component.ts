@@ -5,20 +5,42 @@ import { SatisTalepService } from 'src/app/services/satis-talep.service';
 @Component({
   selector: 'app-talep-item',
   templateUrl: './talep-item.component.html',
-  styleUrls: ['./talep-item.component.css']
+  styleUrls: ['./talep-item.component.css'],
 })
 export class TalepItemComponent implements OnInit {
+  constructor(private talepService: SatisTalepService) {}
 
-  constructor(private talepService:SatisTalepService) { }
+  @Input() talep: TalepSatis = new TalepSatis(
+    0,
+    0,
+    '',
+    '',
+    0,
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    ''
+  );
 
-  @Input() talep: TalepSatis = new TalepSatis(0,0,'','2021-01-01',0,'','','','','','','');
-  
-  talepKitaplar: TalepSatisKitap[]= [new TalepSatisKitap(0,0,0,0,'dnm','yazar','kategoori',2020,20,'minnakımı çok seviom ki ben ya off yicez onu')]
-
+  talepKitaplar: TalepSatisKitap[] = [
+    new TalepSatisKitap(0, 0, 0, 0, '', '', '', 2020, 20, ''),
+  ];
 
   ngOnInit(): void {
+    this.talepService
+      .talepKitapListele(this.talep.talep_id)
+      .subscribe((kitaplar) => {
+        this.talepKitaplar = kitaplar;
+      });
   }
 
- 
-
+  onayla() {
+    this.talepService.talepOnayla(this.talep.talep_id).subscribe((res) => {
+      alert('Talep Onaylandı');
+      window.location.reload();
+    });
+  }
 }

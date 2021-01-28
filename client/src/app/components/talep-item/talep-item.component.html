@@ -1,18 +1,55 @@
-<div>
-    <div class="card" style="width: 18rem">
-        <div class="card-header">
-            bayi id: {{ talep.bayi_isim }} | tarih: {{ talep.tarih }}
+<div class="card" style="width: 18rem">
+  <div class="card-header">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-auto text-left">
+          {{ talep.bayi_isim }}
         </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">Kitap isim: {{ talep.talep_id }}</li>
-            <li class="list-group-item">adet:</li>
-            <li class="list-group-item">toplam fiyat: {{ talep.fiyat }}</li>
-            <li class="list-group-item">İl:</li>
-            <li class="list-group-item">İlçe:</li>
-            <li class="list-group-item">Posta kodu</li>
-            <li class="list-group-item">bayi sahibi isim:</li>
-            <li class="list-group-item">adet:</li>
-            <li class="list-group-item">email:</li>
-        </ul>
+        <div class="col text-right">
+          {{ talep.il }}
+        </div>
+      </div>
     </div>
+  </div>
+  <ul class="list-group list-group-flush" *ngFor="let kitap of talepKitaplar">
+    <li class="list-group-item">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-8">
+            {{ kitap.isim }}
+          </div>
+          <div class="col-4">
+            <div class="row">
+              <div class="col">
+                <span class="badge badge-info">{{ kitap.adet }} adet</span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <span class="badge badge-success">{{ kitap.fiyat }}₺</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <div class="container-fluid d-flex justify-content-center">
+        <div class="row">
+          <div class="col">
+            <span class="badge badge-primary block"
+              >Toplam Fiyat {{ talep.fiyat }}₺</span
+            >
+          </div>
+          <div class="col" *ngIf="talep.onay_durumu == 0">
+            <button class="btn btn-success btn-sm btn-block" (click)="onayla()">
+              Onayla
+            </button>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
 </div>

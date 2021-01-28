@@ -88,7 +88,8 @@ router.put("/onayla/:id", (req, res) => {
       console.log(err);
       res.status(404).send("Talep onaylanırken sorun meydana geldi");
     }
-    res.send("Talep Onaylandı");
+    console.log("Talep Onaylanıyor");
+    res.json(result);
   });
 });
 

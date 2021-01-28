@@ -1,1 +1,7 @@
-<p>satislar works!</p>
+<div class="container justify-content-center">
+  <div class="row">
+    <div class="col-4" *ngFor="let talep of taleps">
+      <app-talep-item [talep]="talep"> </app-talep-item>
+    </div>
+  </div>
+</div>
