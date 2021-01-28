@@ -72,7 +72,7 @@ router.post("/talepler", (req, res) => {
       uzunluk++;
       if (uzunluk == req.body.kitaplar.length) {
         console.log("Eklenme bitti");
-        res.send("Talep Oluşturuldu");
+        res.json(result);
       }
       console.log("kitaplar.length " + req.body.kitaplar.length);
       console.log("uzunluk " + uzunluk);

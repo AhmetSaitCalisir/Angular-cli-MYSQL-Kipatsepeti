@@ -35,4 +35,9 @@ export class BayiItemComponent implements OnInit {
   bayiGuncelle() {
     this.router.navigate(['/bayiguncelle', this.bayi.id]);
   }
+
+  talepOlustur() {
+    alert('Talep oluşturulacak');
+    this.router.navigate(['/talepolustur', this.bayi.id]);
+  }
 }

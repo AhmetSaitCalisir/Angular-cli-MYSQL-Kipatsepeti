@@ -1,17 +1,26 @@
 <div class="container">
-    <div class="row">
-        <div class="col">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#">KipatSepeti</a>
+  <div class="row">
+    <div class="col">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">KipatSepeti</a>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
                 Ürünler
               </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" routerLink="kitaplar" href="#">Kitaplar</a
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" routerLink="kitaplar" href="#"
+                  >Kitaplar</a
                 >
                 <a class="dropdown-item" routerLink="kitapekle" href="#"
                   >Kitap Ekle</a
@@ -30,8 +39,9 @@
               >
                 Satıcılar
               </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#" routerLink="bayiler">Bayiler</a
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#" routerLink="bayiler"
+                  >Bayiler</a
                 >
                 <a class="dropdown-item" href="#" routerLink="bayiekle"
                   >Bayi Ekle</a
@@ -50,39 +60,43 @@
               >
                 Talep - Satış Kaydı
               </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#" routerLink="talepler">Talepler</a
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#" routerLink="talepler"
+                  >Talepler</a
                 >
                 <a class="dropdown-item" href="#" routerLink="satislar"
                   >Satışlar</a
                 >
-                <a class="dropdown-item" href="#" routerLink="bayiekle"
-                  >Talep Ekle</a
+                <a class="dropdown-item" href="#" routerLink="bayiler"
+                  >Talep Oluştur</a
                 >
               </div>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Lazım olursa diye</a>
-                        </li>
-                    </ul>
-                    <form class="form-inline my-2 my-lg-0">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col">
-                                    <button class="btn btn-outline-success btn-block btn-sm">
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col">
+                  <button class="btn btn-outline-success btn-block btn-sm">
                     Giriş
                   </button>
-                                </div>
-                                <div class="col">
-                                    <button class="btn btn-outline-danger btn-block btn-sm" (click)="logOut()">
+                </div>
+                <div class="col">
+                  <button
+                    class="btn btn-outline-danger btn-block btn-sm"
+                    (click)="logOut()"
+                  >
                     Çıkış
                   </button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                    </div>
-            </nav>
+                </div>
+              </div>
             </div>
-            </div>
-            </div>
+          </form>
+        </div>
+      </nav>
+    </div>
+  </div>
+</div>

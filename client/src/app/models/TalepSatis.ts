@@ -34,10 +34,10 @@ export class TalepOlustur {
   constructor(
     public bayi_id: number,
     public fiyat: string,
-    public kitaplar: Kitaplar[]
+    public kitaplar: TalepKitaplar[]
   ) {}
 }
 
-class Kitaplar {
+export class TalepKitaplar {
   constructor(public adet: number, public kitap_id: number) {}
 }

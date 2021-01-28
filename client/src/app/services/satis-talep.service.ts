@@ -1,7 +1,11 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { TalepSatis, TalepSatisKitap } from '../models/TalepSatis';
+import {
+  TalepOlustur,
+  TalepSatis,
+  TalepSatisKitap,
+} from '../models/TalepSatis';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -36,5 +40,9 @@ export class SatisTalepService {
       { id: id },
       httpOptions
     );
+  }
+
+  talepOlustur(talep: TalepOlustur): Observable<any> {
+    return this.http.post<any>(`${this.talepUrl}/talepler`, talep, httpOptions);
   }
 }

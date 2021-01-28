@@ -23,6 +23,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { KaydolComponent } from './pages/kaydol/kaydol.component';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './pages/login/login.component';
+import { TalepEkleComponent } from './pages/talep-ekle/talep-ekle.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { LoginComponent } from './pages/login/login.component';
     NavbarComponent,
     KaydolComponent,
     LoginComponent,
+    TalepEkleComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
