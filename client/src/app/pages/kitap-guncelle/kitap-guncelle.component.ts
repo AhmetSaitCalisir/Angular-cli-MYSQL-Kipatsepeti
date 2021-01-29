@@ -27,6 +27,11 @@ export class KitapGuncelleComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    if (!localStorage.getItem('isLogged')) {
+      alert('Giriş yapınız.');
+      this.router.navigate(['/']);
+    }
+
     this.route.params.subscribe((params) => {
       this.kitap.id = params['id'];
     });

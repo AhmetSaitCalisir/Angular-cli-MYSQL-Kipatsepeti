@@ -1,6 +1,7 @@
 import { KitapService } from './../../services/kitap.service';
 import { Component, OnInit } from '@angular/core';
 import { Kitap } from 'src/app/models/Kitap';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-kitap-ekle',
@@ -10,9 +11,14 @@ import { Kitap } from 'src/app/models/Kitap';
 export class KitapEkleComponent implements OnInit {
   kitap: Kitap = new Kitap(0, '', '', '', 0, 0, '', '');
 
-  constructor(private kitapService: KitapService) {}
+  constructor(private kitapService: KitapService, private router:Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (!localStorage.getItem('isLogged')) {
+      alert('Giriş yapınız.');
+      this.router.navigate(['/']);
+    }
+  }
   kitapEkle() {
     this.kitapService.kitapEkle(this.kitap).subscribe((res) => {
       console.log(res);

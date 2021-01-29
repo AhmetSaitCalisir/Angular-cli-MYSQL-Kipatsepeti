@@ -25,6 +25,11 @@ export class BayiGuncelleComponent implements OnInit {
     private router: Router
   ) {}
   ngOnInit(): void {
+    if (!localStorage.getItem('isLogged')) {
+      alert('Giriş yapınız.');
+      this.router.navigate(['/']);
+    }
+
     this.route.params.subscribe((params) => {
       this.bayi.id = params['id'];
     });

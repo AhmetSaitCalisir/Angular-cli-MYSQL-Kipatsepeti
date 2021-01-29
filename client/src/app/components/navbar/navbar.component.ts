@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -6,12 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit(): void {}
+  constructor(private router:Router) {}
+  kisi:string|null='';
+  ngOnInit(): void {
+    this.kisi=localStorage.getItem('isLogged');
+  }
+git(){
+  
+  this.router.navigate(['/']);
+}
 
   logOut() {
     localStorage.removeItem('isLogged');
     alert('Cikis yaptiniz.');
+    window.location.reload();
   }
 }
