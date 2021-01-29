@@ -9,10 +9,12 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   styleUrls: ['./kaydol.component.css'],
 })
 export class KaydolComponent implements OnInit {
-  constructor(private authService: AuthenticationService, private router:Router) {}
+  constructor(
+    private authService: AuthenticationService,
+    private router: Router
+  ) {}
   User: Kullanici = new Kullanici('', '', '', '', '');
   ngOnInit(): void {
-
     if (localStorage.getItem('isLogged')) {
       alert('Zaten giriş yaptınız.');
       this.router.navigate(['/']);
@@ -24,6 +26,7 @@ export class KaydolComponent implements OnInit {
     this.authService.addUser(this.User).subscribe((durum) => {
       if (durum) {
         alert('kayıt olundu');
+        this.router.navigate(['/']);
       } else {
         alert('kayıt olunmadı');
       }

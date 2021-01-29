@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class KitapEkleComponent implements OnInit {
   kitap: Kitap = new Kitap(0, '', '', '', 0, 0, '', '');
 
-  constructor(private kitapService: KitapService, private router:Router) {}
+  constructor(private kitapService: KitapService, private router: Router) {}
 
   ngOnInit(): void {
     if (!localStorage.getItem('isLogged')) {

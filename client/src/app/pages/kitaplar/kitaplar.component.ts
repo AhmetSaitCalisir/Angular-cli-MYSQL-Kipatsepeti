@@ -10,7 +10,7 @@ import { KitapService } from 'src/app/services/kitap.service';
 export class KitaplarComponent implements OnInit {
   books: Kitap[] = [];
 
-  constructor(private kitapService: KitapService,private router:Router) {}
+  constructor(private kitapService: KitapService, private router: Router) {}
 
   ngOnInit(): void {
     if (!localStorage.getItem('isLogged')) {

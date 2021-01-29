@@ -48,7 +48,6 @@ export class KitapGuncelleComponent implements OnInit {
     this.bookService.bookUpdate(this.kitap).subscribe((res) => {
       alert('GÜNCELLEDİN');
       this.router.navigate(['/kitaplar']);
-    })
-    
+    });
   }
 }

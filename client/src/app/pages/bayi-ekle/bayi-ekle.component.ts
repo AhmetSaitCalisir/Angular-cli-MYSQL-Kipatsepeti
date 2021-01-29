@@ -10,7 +10,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class BayiEkleComponent implements OnInit {
   bayi: Bayi = new Bayi(0, '', '', '', ' ', '', '', '');
-  constructor(private bayiService: BayiService,private router:Router) {}
+  constructor(private bayiService: BayiService, private router: Router) {}
 
   ngOnInit(): void {
     if (!localStorage.getItem('isLogged')) {

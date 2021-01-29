@@ -11,7 +11,10 @@ import { SatisTalepService } from 'src/app/services/satis-talep.service';
 export class TaleplerComponent implements OnInit {
   taleps: TalepSatis[] = [];
 
-  constructor(private talepService: SatisTalepService, private router:Router) {}
+  constructor(
+    private talepService: SatisTalepService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     if (!localStorage.getItem('isLogged')) {

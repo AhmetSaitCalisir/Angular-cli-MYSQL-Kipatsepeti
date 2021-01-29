@@ -1,3 +1,4 @@
+import { KaydolComponent } from './pages/kaydol/kaydol.component';
 import { TalepEkleComponent } from './pages/talep-ekle/talep-ekle.component';
 import { BayiGuncelleComponent } from './pages/bayi-guncelle/bayi-guncelle.component';
 import { BayiEkleComponent } from './pages/bayi-ekle/bayi-ekle.component';
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'talepler', component: TaleplerComponent },
   { path: 'satislar', component: SatislarComponent },
   { path: 'talepolustur/:id', component: TalepEkleComponent },
+  { path: 'kaydol', component: KaydolComponent },
 ];
 
 @NgModule({

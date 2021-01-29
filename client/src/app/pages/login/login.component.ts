@@ -12,7 +12,10 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 export class LoginComponent implements OnInit {
   loginUser: Kullanici = new Kullanici('', '', '', '', '');
 
-  constructor(private authService: AuthenticationService,private router:Router) {}
+  constructor(
+    private authService: AuthenticationService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     if (localStorage.getItem('isLogged')) {
@@ -28,7 +31,8 @@ export class LoginComponent implements OnInit {
       this.authService.login(this.loginUser).subscribe((durum) => {
         if (durum) {
           localStorage.setItem('isLogged', this.loginUser.ad);
-          alert('giriş yaptınız');
+          localStorage.setItem('soyAd', this.loginUser.soyad);
+          alert(`Hoşgeldiniz ${this.loginUser.ad} ${this.loginUser.soyad}`);
           window.location.reload();
         } else {
           alert('lütfen tekrar deneyin');

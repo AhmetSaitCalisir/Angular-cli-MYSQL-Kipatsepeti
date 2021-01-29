@@ -7,15 +7,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-  constructor(private router:Router) {}
-  kisi:string|null='';
+  constructor(private router: Router) {}
+  kisi: string | null = '';
+  soyad: string | null = '';
   ngOnInit(): void {
-    this.kisi=localStorage.getItem('isLogged');
+    this.kisi = localStorage.getItem('isLogged');
+    this.soyad = localStorage.getItem('soyAd');
   }
-git(){
-  
-  this.router.navigate(['/']);
-}
+  git() {
+    this.router.navigate(['/']);
+  }
 
   logOut() {
     localStorage.removeItem('isLogged');

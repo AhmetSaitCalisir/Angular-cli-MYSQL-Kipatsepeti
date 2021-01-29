@@ -41,7 +41,6 @@ export class TalepEkleComponent implements OnInit {
     private talepService: SatisTalepService
   ) {}
   ngOnInit(): void {
-
     if (!localStorage.getItem('isLogged')) {
       alert('Giriş yapınız.');
       this.router.navigate(['/']);

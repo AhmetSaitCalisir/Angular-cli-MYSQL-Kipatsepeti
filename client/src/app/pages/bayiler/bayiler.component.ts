@@ -10,10 +10,9 @@ import { BayiService } from 'src/app/services/bayi.service';
 })
 export class BayilerComponent implements OnInit {
   bayiler: Bayi[] = [];
-  constructor(private bayiService: BayiService,private router:Router) {}
+  constructor(private bayiService: BayiService, private router: Router) {}
 
   ngOnInit(): void {
-
     if (!localStorage.getItem('isLogged')) {
       alert('Giriş yapınız.');
       this.router.navigate(['/']);
